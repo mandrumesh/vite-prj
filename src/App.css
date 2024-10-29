@@ -1,3 +1,12 @@
+body {
+  min-height: 100vh;
+}
+
+textarea {
+  height: 25vh;
+  resize: none;
+}
+
 /* Toggle-Mode */
 .toggle-mode {
   z-index: 1 !important;
@@ -5,11 +14,35 @@
   top: 66px;
   right: 10px;
 }
+.dark-mode {
+  background-color: #343a40;
+  color: #fff;
+}
+.light-mode {
+  background-color: #fff;
+  color: #000;
+}
+
+
+/* Toast */
+.alert-message {
+  position: fixed;
+  z-index: 1 !important;
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+
+/* Highlight */
+.highlight-yellow {
+  background-color: yellow;
+}
 
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
