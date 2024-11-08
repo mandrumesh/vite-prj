@@ -13,6 +13,11 @@ import {
 import Home from './components/Home'
 import About from './components/About'
 import Contact from './components/Contact'
+import Classes from './components/Classes'
+import Func from './components/Func'
+import Counter from './components/Counter'
+import User from './components/User'
+import UserList from './components/UserList'
 
 
 function App() {
@@ -51,10 +56,15 @@ function App() {
         <ToggleMode mode={mode} toggleMode={toggleMode} />
         <Header logo="This is Logo" mode={mode} />
         <Alert alert={alert} showAlert={showAlert} />
+        {/* <Classes /> */}
+        {/* <Func /> */}
+        {/* <Counter /> */}
         <Routes>
           <Route path="/" element={<Home showAlert={showAlert} />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/user/:userId/:userName" element={<User />} />
+          <Route path="/user" element={<UserList />} />
         </Routes>
       </Router>
     </>

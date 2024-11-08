@@ -60,8 +60,8 @@ const Home = (props) => {
 
     return (
         <div>
-            <div className="container mt-5">
-                <label htmlFor="exampleFormControlTextarea1" className="form-label"><strong>Example textarea</strong></label>
+            <div className="container mt-4">
+                <label htmlFor="exampleFormControlTextarea1" className="form-label"><strong><h3>Example textarea</h3></strong></label>
                 <textarea className="form-control" value={text} name={text} onChange={handleChange} placeholder={text} id="exampleFormControlTextarea1" rows="3"></textarea>
                 <button className='btn btn-primary mx-2 my-3' onClick={handleUpperCase}>Uppercase</button>
                 <button className='btn btn-primary mx-2 my-3' onClick={handleLowerCase}>Lowercase</button>
@@ -73,13 +73,13 @@ const Home = (props) => {
                 <div className='row'>
                     <div className='col-4'>
                         <h4>Analyze Your Text</h4>
-                        <p><strong>Words Count: </strong>{text == 0 ? 0 : text.split(/\S+/g).length - 1}</p>
+                        <p><strong>Words Count: </strong>{text.length == 0 ? 0 : text.split(/\S+/g).length - 1}</p>
                         <p><strong>Character Count: </strong>{text.replace(/ /g, "").length}</p>
                         <p><strong>Estimated Reading Time: </strong>{(text.replace(/ /g, "").length / 1200).toFixed(2)} minutes</p>
                     </div>
                     <div className='col-8'>
                         <h4>Preview Text</h4>
-                        <p>{text.length >= 0 ? text : "No text to display."}</p>
+                        <p>{text.length > 0 ? text : "No text to display."}</p>
                     </div>
 
                 </div>
