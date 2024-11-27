@@ -15,7 +15,7 @@ const UserList = () => {
     }
 
     return (
-        <div className='container mt-5'>
+        <div className='container pt-5'>
             <h4>User List</h4>
             <ul className='list-unstyled'>
                 {users.map((user) => (

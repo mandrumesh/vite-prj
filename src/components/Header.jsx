@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { FaShoppingCart } from "react-icons/fa";
+import productContext from '../context/productContext'
 
 const Header = (props) => {
+    const context = useContext(productContext)
+    const { state: { cart } } = context
 
     return (
         <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
-            <div className="container-fluid">
+            <div className="container">
                 <Link className="navbar-brand" to="/">{props.logo}</Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
@@ -35,11 +39,19 @@ const Header = (props) => {
                         <li className="nav-item">
                             <Link className="nav-link" to="/user">User</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/signup">Sign Up</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/login">Log In</Link>
+                        </li>
                     </ul>
-                    <form className="d-flex">
-                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button className="btn btn-outline-success" type="submit">Search</button>
-                    </form>
+                    <Link className="nav-link position-relative" to="/cartitems"><FaShoppingCart />
+                        <span class="position-absolute top-0 start-100 translate-middle badge bg-danger">
+                            {cart.length}
+                            <span class="visually-hidden">unread messages</span>
+                        </span>
+                    </Link>
                 </div>
             </div>
         </nav>

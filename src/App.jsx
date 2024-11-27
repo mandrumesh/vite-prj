@@ -8,7 +8,7 @@ import Alert from './components/Alert'
 import {
   BrowserRouter as Router,
   Routes,
-  Route  
+  Route
 } from "react-router-dom";
 import Home from './components/Home'
 import About from './components/About'
@@ -18,6 +18,11 @@ import Func from './components/Func'
 import Counter from './components/Counter'
 import User from './components/User'
 import UserList from './components/UserList'
+import ProductState from './context/ProductState'
+import SignUp from './components/SignUp'
+import Login from './components/Login'
+import CartItems from './components/CartItems'
+
 
 
 function App() {
@@ -52,21 +57,28 @@ function App() {
 
   return (
     <>
-      <Router>
-        <ToggleMode mode={mode} toggleMode={toggleMode} />
-        <Header logo="This is Logo" mode={mode} />
-        <Alert alert={alert} showAlert={showAlert} />
-        {/* <Classes /> */}
-        {/* <Func /> */}
-        {/* <Counter /> */}
-        <Routes>
-          <Route path="/" element={<Home showAlert={showAlert} />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/user/:userId/:userName" element={<User />} />
-          <Route path="/user" element={<UserList />} />
-        </Routes>
-      </Router>
+      <ProductState>
+        <Router>
+          <ToggleMode mode={mode} toggleMode={toggleMode} />
+          <Header logo="This is Logo" mode={mode} />
+          <Alert alert={alert} showAlert={showAlert} />
+          {/* <Classes /> */}
+          {/* <Func /> */}
+          {/* <Counter /> */}
+          <div className='header-bottom-spacer'>
+            <Routes>
+              <Route path="/" element={<Home showAlert={showAlert} />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/user/:userId/:userName" element={<User />} />
+              <Route path="/user" element={<UserList />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/cartitems" element={<CartItems />} />
+            </Routes>
+          </div>
+        </Router>
+      </ProductState>
     </>
   )
 }
