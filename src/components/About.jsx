@@ -1,6 +1,7 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import productContext from '../context/productContext'
 import chair from '../assets/img/chair.avif'
+import { BsThreeDots } from "react-icons/bs";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 AOS.init();
@@ -9,9 +10,28 @@ AOS.init();
 const About = () => {
     const context = useContext(productContext)
     const { state: { cart }, dispatch, product } = context
+    const [menuVisible, setMenuVisible] = useState(false)
+    const [modalVisible, setModalVisible] = useState(false)
 
     console.log('this is cart', cart);
 
+    const toggleMenu = (id) => {
+        setMenuVisible(prevState => ({
+            ...prevState,
+            [id]: !prevState[id]
+        }))
+    }
+
+    const openEditModal = () => {
+        setMenuVisible(true)
+    }
+
+    const handleDelete = async () => {
+        console.log("Deleting Product")
+        // await deleteProduct(id)
+    }
+
+    co
 
 
     // console.log(article)
@@ -37,7 +57,16 @@ const About = () => {
                                         <img src={chair} className="card-img-top" alt="..." />
                                     </div>
                                     <div className="card-body">
-                                        <h5 className="card-title">{e.name}</h5>
+                                        <div className='three-dots'>
+                                            <h5 className="card-title">{e.name}</h5>
+                                            <BsThreeDots onClick={()=>toggleMenu(e.id)} />
+                                            {menuVisible[e.id] && (
+                                                <div className='menu-option'>
+                                                    <Link to="/editmodal"><button onClick={()=>openEditModal(e)}>Edit</button></Link>
+                                                    <button onClick={()=>handleDelete(e.id)}>Delete</button>
+                                                </div>
+                                            )}
+                                        </div>
                                         <p className="card-text">{e.description}</p>
                                         <p className="card-text">Rs. {e.price}</p>
                                         {/* <a href="#" target='blank' className="btn btn-primary">Add to Cart</a>

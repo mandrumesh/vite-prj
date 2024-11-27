@@ -1,4 +1,4 @@
-require('dotenv').config(); // Load environment variables form .env fiel
+require('dotenv').config({ path: '../.env' }); // Load environment variables form .env file
 const jwt = require('jsonwebtoken')
 
 const JWT_SECRET = process.env.JWT_SECRET; // Verify the token using the JWT_SECRET from environment variables

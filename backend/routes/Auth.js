@@ -2,11 +2,12 @@ const express = require('express')
 const User = require('../model/User')
 const bcrypt = require('bcryptjs')
 const { body, validationResult } = require('express-validator')
+require('dotenv').config({ path: '../.env' }) // Load environment variables form .env file
 const jwt = require('jsonwebtoken')
 const fetchUser = require('../middleware/Fetchuser')
 const router = express.Router()
 
-const JWT_SECRET = "theboys"
+const JWT_SECRET = process.env.JWT_SECRET; // Verify the token using the JWT_SECRET from environment variables
 
 // Creating a User
 router.post('/createuser', [
@@ -84,7 +85,7 @@ router.post('/login', [
     }
 })
 
-// Get User
+// Get User 
 router.get('/getuser', fetchUser, async(req, res) => {
     try {
         const userId = req.user.id

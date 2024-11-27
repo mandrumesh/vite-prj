@@ -22,6 +22,7 @@ import ProductState from './context/ProductState'
 import SignUp from './components/SignUp'
 import Login from './components/Login'
 import CartItems from './components/CartItems'
+import Openeditmodal from './components/Openeditmodal'
 
 
 
@@ -75,6 +76,7 @@ function App() {
               <Route path="/signup" element={<SignUp />} />
               <Route path="/login" element={<Login />} />
               <Route path="/cartitems" element={<CartItems />} />
+              <Route path="/editmodal" element={<Openeditmodal />} />
             </Routes>
           </div>
         </Router>

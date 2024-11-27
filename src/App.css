@@ -101,6 +101,11 @@ textarea {
 
 }
 
+.three-dots {
+  display: flex;
+  justify-content: space-between;
+}
+
 
 
 /* Highlight */
